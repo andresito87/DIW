@@ -11,20 +11,33 @@
     --color-secundario: #f4f4f4;
     --color-titulos: #3170a0;
     --color-textos: #81eadd;
+    --color-animaciones: #fc8f8f;
+    --color-animaciones-hover: #ff0000;
+    --color-sombra-oscura: #100f0f;
 }
 
 body {
+    width: 100%;
+    height: 600px;
     font-family: Lato, sans-serif, serif;
     background-color: var(--color-secundario);
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "header header"
+        "nav nav"
+        "transformaciones animacionesCSS"
+        "animacionesCanvas animacionesSVG"
+        "footer footer";
 }
 
 header {
+    grid-area: header;
     background-color: var(--color-primario);
     color: #fff;
     padding: 10px 0;
     text-align: center;
+    width: 100%;
 }
 
 header h1 {
@@ -32,7 +45,7 @@ header h1 {
     font-weight: bold;
     color: var(--color-titulos);
     margin: 10px 5px;
-    text-shadow: var(--color-textos) 2px 2px;
+    text-shadow: var(--color-sombra-oscura) 2px 1px 2px;
 }
 
 header div.autor {
@@ -43,8 +56,8 @@ header div.autor {
 }
 
 header div.autor img {
-    width: 5em;
-    height: 5em;
+    width: 3em;
+    height: 3em;
     border-radius: 50%;
     margin: 10px 0;
 }
@@ -70,16 +83,19 @@ header p>img:hover {
     }
 }
 
-
 nav {
+    grid-area: nav;
     background-color: var(--color-titulos);
+    height: 5em;
     color: #fff;
     padding: 10px 0;
     text-align: center;
     font-size: 1.2em;
+    display: flex;
 }
 
 nav ul {
+    width: 100%;
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -88,25 +104,268 @@ nav ul {
 }
 
 nav ul li {
-    display: inline;
     margin: 0 10px;
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    justify-content: center
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: var(--color-primario);
+
 }
 
 nav ul li a {
-    color: #fff;
+    color: var(--color-titulos);
     text-decoration: none;
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s, font-size 0.1s;
 }
 
-nav ul li a:hover {
-    color: #f4f4f4;
+nav ul li a img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+}
+
+nav ul li a:active {
+    color: var(--color-animaciones-hover);
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+nav ul li a:active img {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
 }
 
 nav img {
     width: 50px;
     height: 50px;
+    margin: 0;
+}
+
+#transformaciones {
+    grid-area: transformaciones;
+    background-color: var(--color-animaciones);
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#transformaciones img {
+    width: 3em;
+    height: 3em;
+}
+
+#transformaciones>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 15px;
+    padding: 10px;
+    background-color: yellow;
+    height: 40%;
+    width: 300px;
+    border-radius: 10px;
+}
+
+#transformaciones>div.izquierda img {
+    width: 35px;
+    height: 35px;
+}
+
+#transformaciones>div.derecha img {
+    width: 35px;
+    height: 35px;
+}
+
+#transformaciones div.izquierda div.imagen {
+    background-color: blueviolet;
+    width: 60px;
+    margin-left: 100px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#transformaciones div.derecha div.imagen {
+    background-color: blueviolet;
+    width: 60px;
+    margin-right: 80px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#transformaciones a {
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#transformaciones div.izquierda {
+    transform: translateX(-60%);
+}
+
+#transformaciones div.izquierda:hover {
+    animation: desplazarDerecha 1s linear forwards,
+        aumentarTamanoFuente 1s linear forwards,
+        cambiarColorFuente 1s ease-in-out forwards;
+}
+
+#transformaciones div.izquierda:hover div.imagen {
+    background-color: var(--color-animaciones-hover);
+}
+
+#transformaciones div.izquierda:hover img {
+    animation: girar 1s linear forwards;
+}
+
+#transformaciones div.izquierda:not(:hover) {
+    animation: desplazarIzquierda 1s linear forwards,
+        disminuirTamanoFuente 1s linear forwards;
+}
+
+#transformaciones div.derecha {
+    transform: translateX(60);
+}
+
+#transformaciones div.derecha:hover img {
+    animation: girar 1s linear forwards;
+}
+
+#transformaciones div.derecha:hover div.imagen {
+    background-color: var(--color-animaciones-hover);
+}
+
+#transformaciones div.derecha:hover {
+    animation: desplazarIzquierdaFiguraDerecha 1s linear forwards,
+        aumentarTamanoFuente 1s linear forwards,
+        cambiarColorFuente 1s ease-in-out forwards;
+}
+
+#transformaciones div.derecha:not(:hover) {
+    animation: desplazarDerechaFiguraDerecha 1s linear forwards,
+        disminuirTamanoFuente 1s linear forwards;
+}
+
+@keyframes desplazarIzquierda {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-60%);
+    }
+}
+
+@keyframes desplazarDerecha {
+    from {
+        transform: translateX(-60%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes desplazarIzquierdaFiguraDerecha {
+    from {
+        transform: translateX(60%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes desplazarDerechaFiguraDerecha {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(60%);
+    }
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes aumentarTamanoFuente {
+    from {
+        font-size: 0.8em;
+    }
+
+    to {
+        font-size: 2em;
+    }
+}
+
+@keyframes disminuirTamanoFuente {
+    from {
+        font-size: 2em;
+    }
+
+    to {
+        font-size: 0.8em;
+    }
+}
+
+@keyframes cambiarColorFuente {
+    from {
+        color: green !important;
+    }
+
+    to {
+        color: blue !important;
+    }
+}
+
+#animacionesCSS {
+    grid-area: animacionesCSS;
+    background-color: var(--color-textos);
+    height: 50px;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+
+#animacionesCanvas {
+    grid-area: animacionesCanvas;
+}
+
+#animacionesSVG {
+    grid-area: animacionesSVG;
+}
+
+footer {
+    grid-area: footer;
 }
