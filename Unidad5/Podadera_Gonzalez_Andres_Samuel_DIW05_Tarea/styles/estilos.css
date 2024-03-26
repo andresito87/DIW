@@ -128,9 +128,10 @@ nav ul li a img {
 }
 
 nav ul li a:active {
-    color: var(--color-animaciones-hover);
     font-size: 1.2em;
     font-weight: bold;
+    color: var(--color-animaciones-hover);
+    transition: color 1s, font-size 1s;
 }
 
 nav ul li a:active img {
@@ -144,6 +145,8 @@ nav img {
     height: 50px;
     margin: 0;
 }
+
+/*Ejercicio 2.2 Transiciones y transformaciones*/
 
 #transformaciones {
     grid-area: transformaciones;
@@ -351,6 +354,8 @@ nav img {
         font-size: 0.8em;
     }
 }
+
+/*Ejercicio 3 Animaciones CSS*/
 
 #animacionesCSS {
     grid-area: animacionesCSS;
