@@ -234,7 +234,7 @@ nav img {
 }
 
 #transformaciones div.izquierda:hover img {
-    animation: girar 1s linear forwards;
+    animation: girarDerecha 1s linear forwards;
 }
 
 #transformaciones div.izquierda:not(:hover) {
@@ -242,12 +242,16 @@ nav img {
         disminuirTamanoFuente 1s linear forwards;
 }
 
+#transformaciones div.izquierda:hover a {
+    color: var(--color-animaciones-hover);
+}
+
 #transformaciones div.derecha {
     transform: translateX(60);
 }
 
 #transformaciones div.derecha:hover img {
-    animation: girar 1s linear forwards;
+    animation: girarIzquierda 1s linear forwards;
 }
 
 #transformaciones div.derecha:hover div.imagen {
@@ -256,13 +260,16 @@ nav img {
 
 #transformaciones div.derecha:hover {
     animation: desplazarIzquierdaFiguraDerecha 1s linear forwards,
-        aumentarTamanoFuente 1s linear forwards,
-        cambiarColorFuente 1s ease-in-out forwards;
+        aumentarTamanoFuente 1s linear forwards;
 }
 
 #transformaciones div.derecha:not(:hover) {
     animation: desplazarDerechaFiguraDerecha 1s linear forwards,
         disminuirTamanoFuente 1s linear forwards;
+}
+
+#transformaciones div.derecha:hover a {
+    color: var(--color-animaciones-hover);
 }
 
 @keyframes desplazarIzquierda {
@@ -305,13 +312,23 @@ nav img {
     }
 }
 
-@keyframes girar {
+@keyframes girarDerecha {
     from {
         transform: rotate(0deg);
     }
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes girarIzquierda {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
     }
 }
 
@@ -332,16 +349,6 @@ nav img {
 
     to {
         font-size: 0.8em;
-    }
-}
-
-@keyframes cambiarColorFuente {
-    from {
-        color: green !important;
-    }
-
-    to {
-        color: blue !important;
     }
 }
 
