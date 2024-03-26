@@ -50,9 +50,13 @@
             <button id="reanudar">Iniciar<br>Reanudar</button>
             <button id="parar">Parar</button>
         </div>
-
     </section>
-    <section id="animacionesCanvas"></section>
+    <section id="animacionesCanvas">
+        <canvas id="canvas" width="300" height="150">
+            Su navegador no soporta el elemento canvas.
+        </canvas>
+        <button id="iniciar">Iniciar animación</button>
+    </section>
     <section id="animacionesSVG"></section>
 
     <footer>
@@ -66,7 +70,9 @@
         </a>
     </footer>
 
+    <!--Carga de scripts-->
     <script src="./scripts/animacionesCSS.js"></script>
+    <script src="./scripts/animacionesCanvas.js"></script>
 
 </body>
 

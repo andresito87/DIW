@@ -1,6 +1,6 @@
-let divCarga = document.getElementById('carga');
-let divPolo = document.getElementById('polo');
-let divTextoPilaCargada = document.getElementById('pilaCargada');
+const divCarga = document.getElementById('carga');
+const divPolo = document.getElementById('polo');
+const divTextoPilaCargada = document.getElementById('pilaCargada');
 let animacionCuerpoFinalizada = false;
 let animacionPoloFinalizada = false;
 
