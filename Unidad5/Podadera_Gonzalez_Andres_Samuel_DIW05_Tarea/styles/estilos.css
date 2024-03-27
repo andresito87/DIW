@@ -582,20 +582,21 @@ nav img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: var(--color-textos);
 }
 
 #animacionesCanvas canvas {
     background-color: var(--color-canvas);
-    width: 50vw;
-    height: 350px;
+    width: 40vw;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #animacionesCanvas #canvas {
-    border: solid 3px #4682B4;
-    background-color: #FFFFE0;
+    border: solid 3px blue;
+    background-color: var(--color-canvas);
 }
 
 #animacionesCanvas button {
@@ -619,6 +620,8 @@ nav img {
 
 #animacionesSVG {
     grid-area: animacionesSVG;
+    background-color: var(--color-animaciones);
+    height: 400px;
 }
 
 footer {
