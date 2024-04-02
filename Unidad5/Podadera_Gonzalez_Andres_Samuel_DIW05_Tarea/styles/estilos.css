@@ -109,7 +109,12 @@ nav ul li {
     border-radius: 10px;
     padding: 5px 10px;
     background-color: var(--color-primario);
+}
 
+nav ul li:hover {
+    background-color: var(--color-canvas);
+    color: var(--color-textos);
+    transition: background-color 0.5s, color 0.5s;
 }
 
 nav ul li a {
@@ -508,12 +513,12 @@ nav img {
     }
 
     10% {
-        transform: translate(200px 10px);
         transform: rotate3d(1, 5, 1, -180deg);
+        transform: translateX(200px) translateY(-50px);
     }
 
     20% {
-        transform: translateX(0px) translateY(-200px);
+        transform: translateX(-200px) translateY(70px);
     }
 
     25% {
@@ -546,7 +551,7 @@ nav img {
     70% {
         transform: rotate(-45deg);
         transform: scale(1, 1.2);
-        transform: translateX(100px) translateY(-150px);
+        transform: translateX(-200px) translateY(-150px);
     }
 
     75% {
@@ -556,14 +561,13 @@ nav img {
 
     80% {
         transform: rotate3d(1, 1, 1, -180deg);
-        transform: translateX(-100px) translateY(150px);
+        transform: translateX(100px) translateY(150px);
         transform: scale(1.2, 1);
     }
 
     90% {
         transform: rotate(-45deg);
         transform: scale(1, 1.2);
-        transform: translateX(-100px) translateY(150px);
     }
 
     100% {
@@ -622,8 +626,79 @@ nav img {
     grid-area: animacionesSVG;
     background-color: var(--color-animaciones);
     height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
 }
 
+#trazosSVG {
+    width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* línea quebrada */
+#linea_quebrada {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+}
+
+@keyframes animacion_linea_quebrada {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* línea inclinada */
+#linea_inclinada {
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+    animation: animacion_linea_inclinada 5s linear forwards;
+    animation-delay: 4s;
+}
+
+@keyframes animacion_linea_inclinada {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* línea vertical */
+#linea_vertical {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: animacion_linea_vertical 5s linear infinite alternate;
+    animation-composition: 4s;
+}
+
+@keyframes animacion_linea_vertical {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* línea curva */
+#linea_curva {
+    stroke-dasharray: 250;
+    stroke-dashoffset: 250;
+    animation: animacion_linea_curva 3s linear forwards;
+    animation-iteration-count: 3;
+}
+
+@keyframes animacion_linea_curva {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Footer */
 footer {
     grid-area: footer;
     background-color: var(--color-primario);
@@ -644,4 +719,117 @@ footer svg {
     width: 50px;
     height: 50px;
     margin: 0 10px;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    body {
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-columns: 1fr;
+        grid-template-areas: "header"
+            "nav"
+            "transformaciones"
+            "animacionesCSS"
+            "animacionesCanvas"
+            "animacionesSVG"
+            "footer";
+    }
+
+    nav {
+        height: 300px;
+        display: grid;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        width: 50%;
+    }
+
+    #transformaciones {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    #transformaciones div.derecha {
+        width: 320px;
+    }
+
+    #animacionesCanvas {
+        background-color: var(--color-animaciones);
+    }
+
+    #animacionesCanvas canvas {
+        width: 70vw;
+        height: 300px;
+    }
+
+    #animacionesSVG {
+        background-color: var(--color-textos);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-columns: 1fr;
+        grid-template-areas: "header"
+            "nav"
+            "transformaciones"
+            "animacionesCSS"
+            "animacionesCanvas"
+            "animacionesSVG"
+            "footer";
+    }
+
+    nav {
+        height: 300px;
+        display: grid;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        width: 50%;
+    }
+
+    #transformaciones {
+        width: 100%;
+        height: 300px;
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        grid-template-areas: "izquierda"
+            "derecha";
+    }
+
+    #transformaciones div.derecha {
+        transform: translateX(2em);
+        width: 320px;
+    }
+
+    #animacionesCanvas {
+        background-color: var(--color-animaciones);
+    }
+
+    #animacionesSVG {
+        background-color: var(--color-textos);
+    }
 }

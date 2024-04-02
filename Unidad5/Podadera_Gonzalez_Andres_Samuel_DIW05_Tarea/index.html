@@ -58,8 +58,31 @@
         <button id="iniciarCanvas">Iniciar animación</button>
     </section>
     <section id="animacionesSVG">
-        <svg id="dibujoSVG" width=300 height=400>
+        <svg id="trazosSVG" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Letra A -->
+            <text id="inicialA" x="20" y="100" font-family="Arial" font-size="60" fill="blue">A</text>
+            <text id="clickame" x="0" y="30" font-family="Arial" font-size="20" fill="black">Clickame</text>
+            <!-- Letra S -->
+            <text x="100" y="100" font-family="Verdana" font-size="60" fill="green">S</text>
+            <!-- Letra P -->
+            <text x="180" y="100" font-family="Serif" font-size="60" fill="red">P</text>
+            <!-- Letra G -->
+            <text x="260" y="100" font-family="Times New Roman" font-size="60" fill="black">G</text>
 
+            <!-- Ruta de la línea quebrada -->
+            <path id="linea_quebrada" d="M10,50 L60,50 L60,100 L110,100 L110,150" stroke="blue" stroke-width="2"
+                fill="none" />
+            <path id="linea_quebrada" d="M10,30 L60,30 L60,80 L110,80 L110,130" stroke="blue" stroke-width="2"
+                fill="none" />
+
+            <!-- Ruta de la línea inclinada -->
+            <path id="linea_inclinada" d="M180,40 L150,120" stroke="green" stroke-width="4" fill="none" />
+
+            <!-- Ruta de la línea vertical -->
+            <path id="linea_vertical" d="M250,50 L250,150" stroke="red" stroke-width="6" fill="none" />
+
+            <!-- Ruta de la línea curva -->
+            <path id="linea_curva" d="M300,50 Q350,0 400,10" stroke="black" stroke-width="8" fill="none" />
         </svg>
     </section>
 
@@ -77,6 +100,7 @@
     <!--Carga de scripts-->
     <script src="./scripts/animacionesCSS.js"></script>
     <script src="./scripts/animacionesCanvas.js"></script>
+    <script src="./scripts/animacionesSVG.js"></script>
 
 </body>
 

@@ -4,6 +4,7 @@ const dibujo = miCanvas.getContext('2d');
 const arrayColores = ['red', 'orange', 'yellow', 'green'];
 const width = miCanvas.width;
 const height = miCanvas.height;
+let intervalo; //intervalo de tiempo para la animación
 
 function dibujarPila() {
   dibujo.rect(120, 30, 50, 80);
@@ -23,6 +24,7 @@ function dibujarProcesoCarga() {
   /* Vaciamos el cuerpo y el polo de la pila, si es que se habia cargado previamente */
   dibujo.clearRect(119, 29, 52, 82);
   dibujo.clearRect(140, 20, 10, 60);
+  dibujo.clearRect(110, 120, 100, 100);
   let y = 100;
 
   function dibujarCargaCuerpo(y, color) {
@@ -40,7 +42,9 @@ function dibujarProcesoCarga() {
   }
 
   function update() {
-    if (y > 21) y -= 1;
+    if (y > 21) {
+      y -= 1;
+    }
   }
 
   function draw() {
@@ -51,7 +55,7 @@ function dibujarProcesoCarga() {
     else dibujarCargaPolo(y);
   }
 
-  setInterval(() => {
+  intervalo = setInterval(() => {
     update();
     draw();
     if (y <= 21) {
@@ -62,6 +66,8 @@ function dibujarProcesoCarga() {
       dibujo.font = '1em Serif';
       dibujo.fillStyle = 'red';
       dibujo.fillText('¡Cargada!', 140, 135);
+      //detengo que se sigan generando intervalos
+      clearInterval(intervalo);
     }
   }, 50);
 }
