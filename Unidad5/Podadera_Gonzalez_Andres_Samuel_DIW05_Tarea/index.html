@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <!--Encabezado-->
     <header>
         <div class="autor">
             <img src="./img/iconoNombreApellidos.png" alt="icono de nombre y apellidos del autor">
@@ -18,6 +19,7 @@
         </div>
         <p><img src="./img/miFoto.png" alt="Foto de Andrés Samuel Podadera González"></p>
     </header>
+    <!--Menú de navegación-->
     <nav>
         <ul>
             <li><a href="#transformaciones"><img src="./img/iconoTransformaciones.png"
@@ -30,6 +32,7 @@
                         alt="icono de animaciones en svg" />Animaciones SVG</a></li>
         </ul>
     </nav>
+    <!--Seccion transformaciones: Ejercicio 2.2-->
     <section id="transformaciones">
         <div class="izquierda"><a href="#transformaciones">Web<div class="imagen"><img src="img/iconoWWW.png"
                         alt="icono de enlace al sitio web" /></div></a></div>
@@ -38,6 +41,7 @@
                 Soporte
             </a></div>
     </section>
+    <!--Seccion animaciones CSS: Ejercicio 3-->
     <section id="animacionesCSS">
         <div class="animacion">
             <div id="polo" class="polo"></div>
@@ -51,39 +55,62 @@
             <button id="parar">Parar</button>
         </div>
     </section>
+    <!--Seccion animaciones Canvas: Ejercicio 4-->
     <section id="animacionesCanvas">
         <canvas id="canvas" width="300" height="150">
             Su navegador no soporta el elemento canvas.
         </canvas>
         <button id="iniciarCanvas">Iniciar animación</button>
     </section>
+    <!--Seccion animaciones SVG: Ejercicio 5-->
     <section id="animacionesSVG">
-        <svg id="trazosSVG" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-            <!-- Letra A -->
-            <text id="inicialA" x="20" y="100" font-family="Arial" font-size="60" fill="blue">A</text>
-            <text id="clickame" x="0" y="30" font-family="Arial" font-size="20" fill="black">Clickame</text>
-            <!-- Letra S -->
-            <text x="100" y="100" font-family="Verdana" font-size="60" fill="green">S</text>
-            <!-- Letra P -->
-            <text x="180" y="100" font-family="Serif" font-size="60" fill="red">P</text>
-            <!-- Letra G -->
-            <text x="260" y="100" font-family="Times New Roman" font-size="60" fill="black">G</text>
+        <svg width="400" height="150" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(0,0)">
+                <!-- Path para la letra A trazo inclinado -->
+                <path id="pathA" d="M40,20 L110 110" style="stroke:#7b0303; stroke-width:3; fill:none;"
+                    stroke-dasharray="6,3,3,3"></path>
+                <!-- Grupo para la letra A -->
+                <g id="inicialA">
+                    <text x="20" y="80" font-family="Serif" font-size="50" fill="#7b0303">A</text>
+                    <animateMotion id="animacionactivadaAlClic" path="M0,-20 L80 60" dur="0s" repeatCount="1"
+                        fill="freeze"></animateMotion>
+                </g>
 
-            <!-- Ruta de la línea quebrada -->
-            <path id="linea_quebrada" d="M10,50 L60,50 L60,100 L110,100 L110,150" stroke="blue" stroke-width="2"
-                fill="none" />
-            <path id="linea_quebrada" d="M10,30 L60,30 L60,80 L110,80 L110,130" stroke="blue" stroke-width="2"
-                fill="none" />
+                <!-- Path para la letra P trazo quebrado -->
+                <path id="pathS" d="M120,40 L120,60 L130,60 L130,80 L150,80 L150,110"
+                    style="stroke:#1a47a2; stroke-width:5; fill:none;"></path>
+                <!-- Grupo para la letra P -->
+                <g transform="translate(-130,-120)">
+                    <g id="letterS">
+                        <text x="130" y="120" font-family="Verdana" font-size="30" fill="#000000" font-weight="bold">P
+                            <animateMotion path="M120,40 L120,60 L130,60 L130,80 L150,80 L150,100 L150,140"
+                                attributeName="startOffset" dur="3s" repeatCount="1" values="0; 100%" fill="freeze"
+                                begin="4s">
+                            </animateMotion>
+                        </text>
+                    </g>
+                </g>
 
-            <!-- Ruta de la línea inclinada -->
-            <path id="linea_inclinada" d="M180,40 L150,120" stroke="green" stroke-width="4" fill="none" />
+                <!-- Path para la letra G trazo curvo -->
+                <path id="pathG" d="M200,40 Q220,60 240,60 Q260,60 260,80 Q260,100 240,100 Q220,100 220,120"
+                    style="stroke:#2e6b0f; stroke-width:7; fill:none;" stroke-dasharray="10,5,5,10,15"></path>
+                <!-- Grupo para la letra G -->
+                <g transform=" translate(-200,-120)">
+                    <g id="letterG">
+                        <text x="200" y="120" font-family="Verdana" font-size="30" fill="#000000" font-weight="bold">G
+                            <animateMotion
+                                path="M200,40 Q220,60 240,60 Q260,60 260,80 Q260,100 240,100 Q220,100 200,140 Q180,100"
+                                attributeName="startOffset" dur="2s" repeatCount="3" values="0; 100%" fill="freeze">
+                            </animateMotion>
+                        </text>
+                    </g>
+                </g>
+            </g>
 
-            <!-- Ruta de la línea vertical -->
-            <path id="linea_vertical" d="M250,50 L250,150" stroke="red" stroke-width="6" fill="none" />
-
-            <!-- Ruta de la línea curva -->
-            <path id="linea_curva" d="M300,50 Q350,0 400,10" stroke="black" stroke-width="8" fill="none" />
         </svg>
+
+
+
     </section>
 
     <footer>

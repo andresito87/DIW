@@ -644,60 +644,6 @@ nav img {
     text-align: center;
 }
 
-/* línea quebrada */
-#linea_quebrada {
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
-}
-
-@keyframes animacion_linea_quebrada {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-/* línea inclinada */
-#linea_inclinada {
-    stroke-dasharray: 150;
-    stroke-dashoffset: 150;
-    animation: animacion_linea_inclinada 5s linear forwards;
-    animation-delay: 4s;
-}
-
-@keyframes animacion_linea_inclinada {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-/* línea vertical */
-#linea_vertical {
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: animacion_linea_vertical 5s linear infinite alternate;
-    animation-composition: 4s;
-}
-
-@keyframes animacion_linea_vertical {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-/* línea curva */
-#linea_curva {
-    stroke-dasharray: 250;
-    stroke-dashoffset: 250;
-    animation: animacion_linea_curva 3s linear forwards;
-    animation-iteration-count: 3;
-}
-
-@keyframes animacion_linea_curva {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
 /* Footer */
 footer {
     grid-area: footer;

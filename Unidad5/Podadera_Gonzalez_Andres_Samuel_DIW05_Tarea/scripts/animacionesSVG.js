@@ -1,15 +1,13 @@
 // Obtener la letra A
-const letraA = document.getElementById('inicialA');
-const textoClickame = document.getElementById('clickame');
-
-// Agregar un controlador de eventos de clic al texto Clickame
-textoClickame.addEventListener('click', function () {
-  let lineaQuebrada = document.getElementById('linea_quebrada');
-  lineaQuebrada.style.animation = 'animacion_linea_quebrada 5s linear forwards';
-});
+let inicialA = document.getElementById('inicialA');
+let animacionactivadaAlClic = document.getElementById(
+  'animacionactivadaAlClic'
+);
 
 // Agregar un controlador de eventos de clic a la letra A
-letraA.addEventListener('click', function () {
-  let lineaQuebrada = document.getElementById('linea_quebrada');
-  lineaQuebrada.style.animation = 'animacion_linea_quebrada 5s linear forwards';
+inicialA.addEventListener('click', function () {
+  // Establecer la duración de la animación a 3 segundos
+  animacionactivadaAlClic.setAttribute('dur', '3s');
+  // Iniciar la animación
+  animacionactivadaAlClic.beginElement();
 });
