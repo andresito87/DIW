@@ -1,3 +1,4 @@
+// Creación de elementos divs y variables
 const divCarga = document.getElementById('carga');
 const divPolo = document.getElementById('polo');
 const divTextoPilaCargada = document.getElementById('pilaCargada');
@@ -11,6 +12,7 @@ divCarga.addEventListener('animationend', function () {
   animacionCuerpoFinalizada = true;
 });
 
+// Añadir escuchador de evento de finalizacion de animacion css
 divPolo.addEventListener('animationend', function () {
   animacionPoloFinalizada = true;
 });
@@ -22,17 +24,19 @@ document.addEventListener('DOMContentLoaded', function () {
   divTextoPilaCargada.style.animationPlayState = 'paused';
 });
 
-var botonParar = document.getElementById('parar'); // Selecciona el botón por su ID
+// Añadir escuchador de evento al hacer clic en el boton de iniciar
+let botonParar = document.getElementById('parar');
 botonParar.addEventListener('click', function () {
-  // Agrega un evento de clic al botón
+  // Pausamos las animaciones
   divCarga.style.animationPlayState = 'paused';
   divPolo.style.animationPlayState = 'paused';
   divTextoPilaCargada.style.animationPlayState = 'paused';
 });
 
-var botonReanudar = document.getElementById('reanudar'); // Selecciona el botón por su ID
+// Añadir escuchador de evento al hacer clic en el boton de reanudar
+let botonReanudar = document.getElementById('reanudar');
 botonReanudar.addEventListener('click', function () {
-  // Agrega un evento de clic al botón
+  // Comprobamos si las animaciones han finalizado, si es así, las reiniciamos
   if (animacionPoloFinalizada && animacionCuerpoFinalizada) {
     divCarga.style.animation = 'none'; // Detenemos la animación
     void divCarga.offsetWidth; // Forzamos el repaint
@@ -49,6 +53,7 @@ botonReanudar.addEventListener('click', function () {
     void divTextoPilaCargada.offsetWidth; // Forzamos el repaint
     divTextoPilaCargada.style.animation = null; // Restablecemos la animación
     divTextoPilaCargada.style.animationPlayState = 'paused';
+    // Si no han finalizado, comprobamos si están en pausa o en ejecución
   } else if (divCarga.style.animationPlayState == 'running') {
     divCarga.style.animation = 'none'; // Detenemos la animación
     void divCarga.offsetWidth; // Forzamos el repaint
@@ -65,6 +70,7 @@ botonReanudar.addEventListener('click', function () {
     void divTextoPilaCargada.offsetWidth; // Forzamos el repaint
     divTextoPilaCargada.style.animation = null; // Restablecemos la animación
     divTextoPilaCargada.style.animationPlayState = 'paused';
+    // Si están en pausa, las reanudamos
   } else if (
     divCarga.style.animationPlayState == 'paused' &&
     !animacionCuerpoFinalizada

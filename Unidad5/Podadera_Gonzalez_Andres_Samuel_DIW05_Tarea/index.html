@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarea Unidad 5: Animaciones</title>
+    <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="./styles/estilos.css">
 </head>
 
@@ -55,6 +56,7 @@
             <button id="parar">Parar</button>
         </div>
     </section>
+
     <!--Seccion animaciones Canvas: Ejercicio 4-->
     <section id="animacionesCanvas">
         <canvas id="canvas" width="300" height="150">
@@ -67,13 +69,13 @@
         <svg width="400" height="150" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(0,0)">
                 <!-- Path para la letra A trazo inclinado -->
-                <path id="pathA" d="M40,20 L110 110" style="stroke:#7b0303; stroke-width:3; fill:none;"
+                <path id="pathA" d="M50,30 L110 110" style="stroke:#7b0303; stroke-width:3; fill:none;"
                     stroke-dasharray="6,3,3,3"></path>
                 <!-- Grupo para la letra A -->
                 <g id="inicialA">
-                    <text x="20" y="80" font-family="Serif" font-size="50" fill="#7b0303">A</text>
-                    <animateMotion id="animacionactivadaAlClic" path="M0,-20 L80 60" dur="0s" repeatCount="1"
-                        fill="freeze"></animateMotion>
+                    <text x="20" y="60" font-family="Serif" font-size="50" fill="#7b0303">A</text>
+                    <animateMotion id="animacionactivadaAlClic" path="M0,0 L80 90" begin="click" dur="3s"
+                        repeatCount="1" fill="freeze"></animateMotion>
                 </g>
 
                 <!-- Path para la letra P trazo quebrado -->
@@ -106,10 +108,7 @@
                     </g>
                 </g>
             </g>
-
         </svg>
-
-
 
     </section>
 
@@ -127,7 +126,6 @@
     <!--Carga de scripts-->
     <script src="./scripts/animacionesCSS.js"></script>
     <script src="./scripts/animacionesCanvas.js"></script>
-    <script src="./scripts/animacionesSVG.js"></script>
 
 </body>
 
