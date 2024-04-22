@@ -4,4 +4,11 @@
 
 ### Tarea Unidad 6: Contenidos web interactivos
 
+> **Tecnologías utilizadas**:
+>
+> - HTML5
+> - CSS3
+> - JavaScript
+> - jQuery
+
 #### Autor: Andrés Samuel Podadera González
