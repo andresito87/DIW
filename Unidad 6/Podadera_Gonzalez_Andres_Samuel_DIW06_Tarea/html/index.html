@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Maqueta Tarea 06</title>
 
     <!-- Estilos -->
@@ -35,9 +36,9 @@
     <nav>
         <fieldset class="menu">
             <legend>Paneles visibles</legend>
-            <label for="imagen"><input type="checkbox" value="img" name="imagenes" id="imagen" checked>Zona de
+            <label for="imagen"><input type="checkbox" value="img" name="imagenes" id="imagen">Zona de
                 Imagen</label>
-            <label for="texto"><input type="checkbox" value="txt" name="texto" id="texto" checked>Zona de Texto </label>
+            <label for="texto"><input type="checkbox" value="txt" name="texto" id="texto">Zona de Texto </label>
         </fieldset>
 
         <button id="inicializar" class="boton" type="reset">Inicializar</button>
@@ -61,11 +62,11 @@
             </div>
             <div class="div_img_grande">
 
-                <img id="img_1" class="img_grande" src="../images/logo_ies_aguadulce.png"
+                <img id="img_2" class="img_grande" src="../images/logo_ies_aguadulce.png"
                     alt="Logotipo del IES AGUADULCE">
             </div>
             <div class="div_img_grande">
-                <img id="img_1" class="img_grande" src="../images/logo_ies_aguadulce.png"
+                <img id="img_3" class="img_grande" src="../images/logo_ies_aguadulce.png"
                     alt="Logotipo del IES AGUADULCE">
             </div>
 
@@ -125,10 +126,11 @@
 
                     <select id="filtro">
 
-                        <option>Filtro 1</option>
-                        <option>Filtro 2</option>
-                        <option>Filtro 3</option>
-                        <option>Filtro 4</option>
+                        <option value="1">Escala de grises al 100%</option>
+                        <option value="2">Invertir color al 100%</option>
+                        <option value="3">Sepia al 100%</option>
+                        <option value="4">Saturación al 200%</option>
+                        <option value="5">Sin Filtro</option>
 
                     </select>
                 </div>

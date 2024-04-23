@@ -309,3 +309,39 @@ button {
 /* Añade aquí tus estilos */
 /* --------------------------------------------------------*/
 /* --------------------------------------------------------*/
+
+.imagen_seleccionada {
+    border: 2px solid red;
+    border-radius: 10px;
+    transition: all 0.5s;
+    transform: scale(1.2);
+}
+
+.posicionamiento_vertical {
+    flex-direction: column;
+}
+
+.posicionamiento_horizontal {
+    flex-direction: row;
+}
+
+/* Filtros de imagen */
+.filtro_escala_gris {
+    filter: grayscale(100%);
+}
+
+.filtro_inversion {
+    filter: invert(100%);
+}
+
+.filtro_sepia {
+    filter: sepia(100%);
+}
+
+.filtro_saturacion {
+    filter: saturate(200%);
+}
+
+.sin_filtro {
+    filter: none;
+}
