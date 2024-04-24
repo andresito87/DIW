@@ -351,3 +351,26 @@ span.numero_imagen {
     font-weight: bold;
     font-size: 1.2rem;
 }
+
+/* Clase que cambiará el color de fondo y de la fuente del texto oculto de la zona de texto */
+.texto_oculto {
+    color: white;
+    background-color: black;
+}
+
+/* Clases que cambiarán el tipo de fuentes del texto visualizado */
+.fuente_1 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.fuente_2 {
+    font-family: 'Arial', sans-serif;
+}
+
+.fuente_3 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.fuente_4 {
+    font-family: 'Verdana', sans-serif;
+}

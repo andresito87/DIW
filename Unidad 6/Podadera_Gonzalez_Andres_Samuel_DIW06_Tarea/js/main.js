@@ -162,7 +162,7 @@ $(document).ready(function () {
     // Vaciar la zona donde se ve el origen de las imagenes seleccionadas
     $('#mostrar_origen_imagenes').empty();
     // Ocultar la zona donde se ve el origen de las imagenes seleccionadas
-    $('#mostrar_origen_imagenes').css('display', 'none');
+    $('#mostrar_origen_imagenes').hide();
   });
 
   // --------------------------------------------------//
@@ -173,9 +173,66 @@ $(document).ready(function () {
     // Eliminar todo sus hijos
     $('#mostrar_origen_imagenes').empty();
     // Muestra el div
-    $('#mostrar_origen_imagenes').css('display', 'block');
+    $('#mostrar_origen_imagenes').show();
     let parrafoImagenesSeleccionadas = $.obtenerParrafoImagenesSeleccionadas();
     $('#mostrar_origen_imagenes').append(parrafoImagenesSeleccionadas);
+  });
+
+  // --------------------------------------------------//
+  // Zonas de texto: Mostrar/ocultar texto
+  // --------------------------------------------------//
+  // Cuando se haga click en el boton de mostrar/ocultar texto, mostrará u ocultará el texto, cambiará el color de fondo, el color de la fuente y a una velocidad determinada
+  $('#mostrar_slide').click(function () {
+    // si el titulo 1 está visible, oculatarlo y mostrar el titulo 2
+    if ($('#titulo_1').is(':visible')) {
+      // transformar a entero la velocidad
+      $('#titulo_1').slideUp(parseInt($('#velocidad').val()), function () {
+        $('.visual_txt').css('background-color', '#000000');
+        $('#titulo_2').css('color', '#ffffff');
+        $('#titulo_2').slideDown(parseInt($('#velocidad').val()));
+      });
+    } else {
+      // si el titulo 2 está visible, oculatarlo y mostrar el titulo 1
+      // transformar a entero la velocidad
+      $('#titulo_2').slideUp(parseInt($('#velocidad').val()), function () {
+        $('.visual_txt').css('background-color', '#ffffff');
+        $('#titulo_1').slideDown(parseInt($('#velocidad').val()));
+      });
+    }
+  });
+
+  // Separación entre caracteres de la zona de texto
+  $('#separacion').change(function () {
+    $('.visual_txt').css('letter-spacing', $(this).val() + 'px');
+  });
+
+  // Tipo de fuente de la zona de texto
+  let tipoFuente = 'fuente_1';
+  $('#fuente').change(function () {
+    tipoFuente = $(this).val();
+    switch (tipoFuente) {
+      case '1':
+        tipoFuente = 'fuente_1';
+        break;
+      case '2':
+        tipoFuente = 'fuente_2';
+        break;
+      case '3':
+        tipoFuente = 'fuente_3';
+        break;
+      case '4':
+        tipoFuente = 'fuente_4';
+        break;
+      default:
+        tipoFuente = 'fuente_1';
+        break;
+    }
+    $('.visual_txt').removeClass('fuente_1');
+    $('.visual_txt').removeClass('fuente_2');
+    $('.visual_txt').removeClass('fuente_3');
+    $('.visual_txt').removeClass('fuente_4');
+    $('.visual_txt').removeClass('fuente_5');
+    $('.visual_txt').addClass(tipoFuente);
   });
 });
 
@@ -242,7 +299,22 @@ $.inicializar = function inicializar() {
     '<p>Insertar orígenes de las imágenes</p>'
   );
   // Muestro el div de origen de las imagenes seleccionadas
-  $('#mostrar_origen_imagenes').css('display', 'block');
+  $('#mostrar_origen_imagenes').show();
+
+  // Zona de texto
+  $('#titulo_1').show();
+  $('#titulo_2').hide();
+
+  // Velocidad por defecto del efecto slide en zona de texto
+  $('#velocidad').val('500');
+
+  // Separación entre caracteres por defecto
+  $('#separacion').val('0');
+  $('#separacion').change();
+
+  // Tipo de fuente por defecto y fuerzo a que se ejecute el evento change para que se actualice la fuente seleccionada
+  $('#fuente').val('1');
+  $('#fuente').change();
 };
 
 // Función para cambiar a la imagen seleccionada
