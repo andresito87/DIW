@@ -345,3 +345,9 @@ button {
 .sin_filtro {
     filter: none;
 }
+
+/* Clase que destacará el texto "Imagen 1, 2 , 3..." en la zona de origen de imagenes seleccionadas */
+span.numero_imagen {
+    font-weight: bold;
+    font-size: 1.2rem;
+}

@@ -142,21 +142,40 @@ $(document).ready(function () {
   // ------------------------------------------//
   // Zonas de imagenes: Cambiar imagen grande
   // ------------------------------------------//
-  // Cuando se haga click en una imagen grande, esta cambiará a la seleccionada, con los estilos correspondientes y su atributo alt correspondiente
+  // Cuando se haga click en una imagen grande, esta cambiará a la seleccionada, con los estilos correspondientes, su atributo alt correspondiente y el efecto slide
   $('.div_img_grande img').click(function () {
-    $(this).attr('src', $('.imagen_seleccionada').attr('src'));
-    $(this).attr('alt', $('.imagen_seleccionada').attr('alt'));
-    // Cambiar el filtro de la imagen seleccionada
-    $.cambiarFiltro($(this).attr('id'), filtroSeleccionado);
+    $(this).slideUp('slow', function () {
+      $(this).attr('src', $('.imagen_seleccionada').attr('src'));
+      $(this).attr('alt', $('.imagen_seleccionada').attr('alt'));
+      $(this).slideDown('slow');
+      // Cambiar el filtro de la imagen seleccionada
+      $.cambiarFiltro($(this).attr('id'), filtroSeleccionado);
+      // Cambiar el grosor borde del div de la imagen grande
+      $('.div_img_grande').click(function () {
+        $(this).css('border-width', $('#borde').val() + 'px');
+      });
+      // Cambiar el color del borde del div de la imagen grande
+      $('.div_img_grande').click(function () {
+        $(this).css('border-color', $('#seleccion_color_borde').val());
+      });
+    });
+    // Vaciar la zona donde se ve el origen de las imagenes seleccionadas
+    $('#mostrar_origen_imagenes').empty();
+    // Ocultar la zona donde se ve el origen de las imagenes seleccionadas
+    $('#mostrar_origen_imagenes').css('display', 'none');
   });
-  // Cuando se haga click en una imagen grande, cambiar el borde de la imagen clicada
-  // Cambiar el grosor borde del div de la imagen grande
-  $('.div_img_grande').click(function () {
-    $(this).css('border-width', $('#borde').val() + 'px');
-  });
-  // Cambiar el color del borde del div de la imagen grande
-  $('.div_img_grande').click(function () {
-    $(this).css('border-color', $('#seleccion_color_borde').val());
+
+  // --------------------------------------------------//
+  // Zonas de imagenes: Ver origen imagenes seleccionadas
+  // --------------------------------------------------//
+  // Cuando se haga click en el boton de ver origen, mostrará el origen de las imagenes seleccionadas
+  $('.bot_origen').click(function () {
+    // Eliminar todo sus hijos
+    $('#mostrar_origen_imagenes').empty();
+    // Muestra el div
+    $('#mostrar_origen_imagenes').css('display', 'block');
+    let parrafoImagenesSeleccionadas = $.obtenerParrafoImagenesSeleccionadas();
+    $('#mostrar_origen_imagenes').append(parrafoImagenesSeleccionadas);
   });
 });
 
@@ -194,6 +213,8 @@ $.inicializar = function inicializar() {
 
   // Zona de filtros(filtro por defecto sin filtro)
   $('#filtro').val('5');
+  // Fuerzo a que se ejecute el evento change para que se actualice el filtro seleccionado
+  $('#filtro').change();
 
   // Zona de imagenes grandes
   // Cambiar todas las imagenes grandes por el logo IES Aguadulce
@@ -214,6 +235,14 @@ $.inicializar = function inicializar() {
 
   // Cambiar el color del borde al valor por defecto
   $('#seleccion_color_borde').val('#3366ff');
+
+  // Zona para mostrar el origen de las imagenes seleccionadas
+  // Se cambia por el texto por defecto
+  $('#mostrar_origen_imagenes').html(
+    '<p>Insertar orígenes de las imágenes</p>'
+  );
+  // Muestro el div de origen de las imagenes seleccionadas
+  $('#mostrar_origen_imagenes').css('display', 'block');
 };
 
 // Función para cambiar a la imagen seleccionada
@@ -259,3 +288,23 @@ $.cambiarFiltro = function cambiarFiltro(idImagen, filtroSeleccionado) {
   // Aplicar el filtro seleccionado
   $('#' + idImagen).addClass(filtroSeleccionado);
 };
+
+// Función obtener parrafo de imagenes seleccionadas
+$.obtenerParrafoImagenesSeleccionadas =
+  function obtenerParrafoImagenesSeleccionadas() {
+    let parrafoImagenesSeleccionadas = document.createElement('p');
+    $('.div_img_grande img').each(function (index) {
+      let span_numero_imagen = document.createElement('span');
+      $(span_numero_imagen).addClass('numero_imagen');
+      let textoNumeroImagen = document.createTextNode(`Imagen ${index + 1}:`);
+      span_numero_imagen.appendChild(textoNumeroImagen);
+      let textoParrafo = document.createTextNode(
+        `Tiene como origen ${$(this).attr('src')}`
+      );
+      parrafoImagenesSeleccionadas.appendChild(span_numero_imagen);
+      parrafoImagenesSeleccionadas.appendChild(textoParrafo);
+      // añadir un salto de línea
+      parrafoImagenesSeleccionadas.appendChild(document.createElement('br'));
+    });
+    return parrafoImagenesSeleccionadas;
+  };
