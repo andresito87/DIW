@@ -199,16 +199,21 @@ $(document).ready(function () {
         $('#titulo_1').slideDown(parseInt($('#velocidad').val()));
       });
     }
+    // ocultar el boton de mostrar/ocultar texto
+    $('#mostrar_slide').hide();
+    // ocultar el input de velocidad
+    $('#div_velocidad').hide();
   });
 
   // Separación entre caracteres de la zona de texto
-  $('#separacion').change(function () {
-    $('.visual_txt').css('letter-spacing', $(this).val() + 'px');
+  $('#separacion').click(function () {
+    $('#titulo_1').css('letter-spacing', $('#separacion').val() + 'px');
+    $('#titulo_2').css('letter-spacing', $('#separacion').val() + 'px');
   });
 
   // Tipo de fuente de la zona de texto
   let tipoFuente = 'fuente_1';
-  $('#fuente').change(function () {
+  $('#fuente').click(function () {
     tipoFuente = $(this).val();
     switch (tipoFuente) {
       case '1':
@@ -231,8 +236,33 @@ $(document).ready(function () {
     $('.visual_txt').removeClass('fuente_2');
     $('.visual_txt').removeClass('fuente_3');
     $('.visual_txt').removeClass('fuente_4');
-    $('.visual_txt').removeClass('fuente_5');
     $('.visual_txt').addClass(tipoFuente);
+  });
+
+  // --------------------------------------------------//
+  // Zona Historial: Guardar historial
+  // --------------------------------------------------//
+  // Guardo acciones realizadas en el historial
+  // Crear el historial de acciones realizadas
+  let arrayHistorial = [];
+  // Hago llamadas a la función guardarAccionEnHistorial cuando cambien los valores o hagan clic en el boton de mostrar/ocultar texto
+  //guardarAccionEnHistorial a su vez llamará a la función actualizarHistorial para mostrar el historial actualizado
+
+  $('#mostrar_slide').click(function () {
+    // llamar a la función de guardar en el historial
+    $.guardarAccionEnHistorial('Mostrar/Ocultar con efecto', arrayHistorial);
+  });
+
+  $('#velocidad').change(function () {
+    $.guardarAccionEnHistorial('Cambio de velocidad', arrayHistorial);
+  });
+
+  $('#separacion').change(function () {
+    $.guardarAccionEnHistorial('Cambio de separación letras', arrayHistorial);
+  });
+
+  $('#fuente').change(function () {
+    $.guardarAccionEnHistorial('Cambio de tipo de fuente', arrayHistorial);
   });
 });
 
@@ -302,6 +332,7 @@ $.inicializar = function inicializar() {
   $('#mostrar_origen_imagenes').show();
 
   // Zona de texto
+  $('.visual_txt').css('background-color', '#ffffff');
   $('#titulo_1').show();
   $('#titulo_2').hide();
 
@@ -310,11 +341,21 @@ $.inicializar = function inicializar() {
 
   // Separación entre caracteres por defecto
   $('#separacion').val('0');
-  $('#separacion').change();
+  $('#titulo_1').removeClass();
+  $('#titulo_1').addClass('fuente_1');
+  $('#titulo_2').removeClass();
+  $('#titulo_2').addClass('fuente_1');
 
   // Tipo de fuente por defecto y fuerzo a que se ejecute el evento change para que se actualice la fuente seleccionada
   $('#fuente').val('1');
-  $('#fuente').change();
+  $('#titulo_1').removeClass();
+  $('#titulo_1').addClass('fuente_1');
+  $('#titulo_2').removeClass();
+  $('#titulo_2').addClass('fuente_1');
+
+  // Zona texto: mostrar boton de mostrar/ocultar texto y el input de velocidad
+  $('#mostrar_slide').show();
+  $('#div_velocidad').show();
 };
 
 // Función para cambiar a la imagen seleccionada
@@ -380,3 +421,27 @@ $.obtenerParrafoImagenesSeleccionadas =
     });
     return parrafoImagenesSeleccionadas;
   };
+
+// Función para guardar accion en el historial
+$.guardarAccionEnHistorial = function guardarAccionEnHistorial(
+  accion,
+  arrayHistorial
+) {
+  // Añadir el string 'accion' al historial
+  arrayHistorial[arrayHistorial.length] = accion;
+  // Actualizar el historial
+  $.actualizarHistorial(arrayHistorial);
+};
+
+// Función para actualizar el historial
+$.actualizarHistorial = function actualizarHistorial(arrayHistorial) {
+  // Crear un nuevo párrafo con el historial
+  let parrafoHistorial = document.createElement('p');
+  let textoAccion = document.createTextNode(
+    `${arrayHistorial.length} .- ${arrayHistorial[arrayHistorial.length - 1]}`
+  );
+  parrafoHistorial.appendChild(textoAccion);
+
+  // Insertar el nuevo párrafo en el historial, en la segunda posición, después del primer párrafo
+  $('#historial').children().eq(0).after(parrafoHistorial);
+};

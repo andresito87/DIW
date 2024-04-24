@@ -374,3 +374,13 @@ span.numero_imagen {
 .fuente_4 {
     font-family: 'Verdana', sans-serif;
 }
+
+/* Quito la separación entre los elementos p del historial */
+#historial p {
+    margin: 0px;
+}
+
+/* Separación entre el mensaje de cabecera y el historial */
+#historial #mensaje_cabecera_historial {
+    margin: 10px 0px;
+}
