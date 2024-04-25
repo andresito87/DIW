@@ -213,7 +213,7 @@ $(document).ready(function () {
 
   // Tipo de fuente de la zona de texto
   let tipoFuente = 'fuente_1';
-  $('#fuente').click(function () {
+  $('#fuente').change(function () {
     tipoFuente = $(this).val();
     switch (tipoFuente) {
       case '1':
@@ -232,11 +232,18 @@ $(document).ready(function () {
         tipoFuente = 'fuente_1';
         break;
     }
-    $('.visual_txt').removeClass('fuente_1');
-    $('.visual_txt').removeClass('fuente_2');
-    $('.visual_txt').removeClass('fuente_3');
-    $('.visual_txt').removeClass('fuente_4');
-    $('.visual_txt').addClass(tipoFuente);
+    // Eliminar todas las clases de fuente
+    $('#titulo_1').removeClass('fuente_1');
+    $('#titulo_1').removeClass('fuente_2');
+    $('#titulo_1').removeClass('fuente_3');
+    $('#titulo_1').removeClass('fuente_4');
+    $('#titulo_2').removeClass('fuente_1');
+    $('#titulo_2').removeClass('fuente_2');
+    $('#titulo_2').removeClass('fuente_3');
+    $('#titulo_2').removeClass('fuente_4');
+    // Añadir la clase de fuente seleccionada
+    $('#titulo_1').addClass(tipoFuente);
+    $('#titulo_2').addClass(tipoFuente);
   });
 
   // --------------------------------------------------//
@@ -266,6 +273,7 @@ $(document).ready(function () {
   });
 });
 
+// Función para inicializar: Restablece los valores por defecto de toda la página menos el historial
 $.inicializar = function inicializar() {
   // Encabezado, logo
   $('.logo_cabecera').attr('src', '../images/pel_ani_01.png');
@@ -341,6 +349,8 @@ $.inicializar = function inicializar() {
 
   // Separación entre caracteres por defecto
   $('#separacion').val('0');
+  $('#titulo_1').css('letter-spacing', '0px');
+  $('#titulo_2').css('letter-spacing', '0px');
   $('#titulo_1').removeClass();
   $('#titulo_1').addClass('fuente_1');
   $('#titulo_2').removeClass();
@@ -362,9 +372,9 @@ $.inicializar = function inicializar() {
 $.cambiarASeleccionada = function cambiarASeleccionada(
   idImagenActualSeleccionada
 ) {
-  // TODO: Mejorar para que se calcule el numero total de miniaturas
   let idImagenAnteriorSeleccionada = '';
-  for (let i = 1; i <= 6; i++) {
+  let numeroMiniaturas = 7;
+  for (let i = 1; i <= numeroMiniaturas; i++) {
     if (
       $('#mini' + i).hasClass('imagen_seleccionada') &&
       idImagenActualSeleccionada != 'mini' + i
@@ -412,7 +422,7 @@ $.obtenerParrafoImagenesSeleccionadas =
       let textoNumeroImagen = document.createTextNode(`Imagen ${index + 1}:`);
       span_numero_imagen.appendChild(textoNumeroImagen);
       let textoParrafo = document.createTextNode(
-        `Tiene como origen ${$(this).attr('src')}`
+        ` Tiene como origen ${$(this).attr('src')}`
       );
       parrafoImagenesSeleccionadas.appendChild(span_numero_imagen);
       parrafoImagenesSeleccionadas.appendChild(textoParrafo);
@@ -438,7 +448,7 @@ $.actualizarHistorial = function actualizarHistorial(arrayHistorial) {
   // Crear un nuevo párrafo con el historial
   let parrafoHistorial = document.createElement('p');
   let textoAccion = document.createTextNode(
-    `${arrayHistorial.length} .- ${arrayHistorial[arrayHistorial.length - 1]}`
+    `${arrayHistorial.length} : ${arrayHistorial[arrayHistorial.length - 1]}`
   );
   parrafoHistorial.appendChild(textoAccion);
 

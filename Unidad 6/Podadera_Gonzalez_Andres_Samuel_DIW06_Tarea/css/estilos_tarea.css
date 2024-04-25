@@ -310,6 +310,23 @@ button {
 /* --------------------------------------------------------*/
 /* --------------------------------------------------------*/
 
+/* Dar color de fondo al header */
+header,
+nav {
+    background-color: rgb(159, 225, 151);
+}
+
+/* Mejorar el visonado del texto  de los botones */
+button {
+    font-weight: bold;
+}
+
+/* Al pasar por encima de cualquier botón, cambiar el color de fondo */
+button:hover {
+    background-color: lightblue;
+}
+
+/* Estilos para la miniatura seleccionada */
 .imagen_seleccionada {
     border: 2px solid red;
     border-radius: 10px;
@@ -317,15 +334,17 @@ button {
     transform: scale(1.2);
 }
 
+/* Estilos para la clase que me cambia la dirección de los elementos de la zona de imagenes grandes */
 .posicionamiento_vertical {
     flex-direction: column;
 }
 
+/* Estilos para la clase que me cambia la dirección de los elementos de la zona de imagenes grandes */
 .posicionamiento_horizontal {
     flex-direction: row;
 }
 
-/* Filtros de imagen */
+/* Clases para filtros de imagen */
 .filtro_escala_gris {
     filter: grayscale(100%);
 }
@@ -383,4 +402,45 @@ span.numero_imagen {
 /* Separación entre el mensaje de cabecera y el historial */
 #historial #mensaje_cabecera_historial {
     margin: 10px 0px;
+    font-weight: bold;
+}
+
+/* Estilos para el footer */
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(159, 225, 151);
+}
+
+#info_pie_de_pagina {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#info_pie_de_pagina h3 {
+    margin: 5px;
+}
+
+#info_pie_de_pagina div {
+    margin: 5px;
+    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+}
+
+footer div#enlace_repositorio {
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+footer div#enlace_repositorio svg {
+    width: 1.5em;
+    height: 1.5em;
 }
