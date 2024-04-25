@@ -4,6 +4,10 @@
 
 ### Tarea Unidad 6: Contenidos web interactivos
 
+#### Imagen del proyecto:
+
+![Imagen del proyecto](./images/imagen_proyecto.png)
+
 > **Tecnologías utilizadas**:
 >
 > - HTML5
@@ -12,3 +16,5 @@
 > - jQuery
 
 #### Autor: Andrés Samuel Podadera González
+
+### Repositorio GitHub: [DIW](https://github.com/andresito87/DIW)

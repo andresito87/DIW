@@ -144,20 +144,22 @@ $(document).ready(function () {
   // ------------------------------------------//
   // Cuando se haga click en una imagen grande, esta cambiará a la seleccionada, con los estilos correspondientes, su atributo alt correspondiente y el efecto slide
   $('.div_img_grande img').click(function () {
+    // Cambiar el color del borde del div de la imagen grande
+    $('.div_img_grande').click(function () {
+      $(this).css('border-color', $('#seleccion_color_borde').val());
+    });
+
+    // Cambiar el grosor borde del div de la imagen grande
+    $('.div_img_grande').click(function () {
+      $(this).css('border-width', $('#borde').val() + 'px');
+    });
+
     $(this).slideUp('slow', function () {
       $(this).attr('src', $('.imagen_seleccionada').attr('src'));
       $(this).attr('alt', $('.imagen_seleccionada').attr('alt'));
       $(this).slideDown('slow');
       // Cambiar el filtro de la imagen seleccionada
       $.cambiarFiltro($(this).attr('id'), filtroSeleccionado);
-      // Cambiar el grosor borde del div de la imagen grande
-      $('.div_img_grande').click(function () {
-        $(this).css('border-width', $('#borde').val() + 'px');
-      });
-      // Cambiar el color del borde del div de la imagen grande
-      $('.div_img_grande').click(function () {
-        $(this).css('border-color', $('#seleccion_color_borde').val());
-      });
     });
     // Vaciar la zona donde se ve el origen de las imagenes seleccionadas
     $('#mostrar_origen_imagenes').empty();
