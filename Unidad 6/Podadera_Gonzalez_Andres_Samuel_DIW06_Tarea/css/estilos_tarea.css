@@ -321,9 +321,10 @@ button {
     font-weight: bold;
 }
 
-/* Al pasar por encima de cualquier botón, cambiar el color de fondo */
+/* Al pasar por encima de cualquier botón, cambiar el color de fondo y el cursor tipo pointer */
 button:hover {
     background-color: lightblue;
+    cursor: pointer;
 }
 
 /* Estilos para la miniatura seleccionada */
